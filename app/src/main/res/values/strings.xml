@@ -3,4 +3,49 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+        <!-- Bottom Navigation -->
+        <string name="title_catatan">Catatan</string>
+        <string name="title_plus">Plus</string>
+        <string name="title_tugas">Tugas</string>
+
+        <!-- Fragment Catatan -->
+        <string name="daftar_catatan">Daftar Catatan</string>
+        <string name="cari_catatan">Cari Catatan</string>
+
+        <!-- Fragment Tugas -->
+        <string name="daftar_tugas">Daftar Tugas</string>
+        <string name="cari_tugas">Cari Tugas</string>
+
+        <!-- Tambah Catatan -->
+        <string name="catatan_baru">Catatan baru</string>
+        <string name="judul_catatan">Judul Catatan</string>
+        <string name="masukkan_judul">Masukkan judul</string>
+        <string name="deskripsi">Deskripsi</string>
+        <string name="isi_deskripsi">Isi deskripsi</string>
+        <string name="tanggal_waktu_opsional">Tanggal &amp; Waktu (opsional)</string>
+        <string name="pilih_tanggal_waktu">Pilih tanggal dan waktu</string>
+        <string name="pilih_waktu">Pilih waktu</string>
+        <string name="tidak_ada_tanggal">Tidak ada tanggal - tidak ada notifikasi</string>
+        <string name="lanjut">Lanjut</string>
+        <string name="tambah">tambahkan</string>
+
+
+        <!-- Tambah Tugas -->
+        <string name="tugas_baru">Tugas baru</string>
+        <string name="judul_tugas">Judul Tugas</string>
+        <string name="tugas">Tugas</string>
+        <string name="batas_waktu">Batas Waktu</string>
+
+        <!-- Dialog -->
+        <string name="menambahkan">Menambahkan</string>
+        <string name="catatan">Catatan</string>
+        <string name="tugas_text">Tugas</string>
+
+        <!-- Menu -->
+        <string name="edit">Edit</string>
+        <string name="hapus">Hapus</string>
+
+        <!-- Hints -->
+        <string name="deskripsi_hint">• Deskripsi</string>
 </resources>
