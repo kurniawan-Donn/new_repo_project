@@ -8,20 +8,20 @@
     app:cardCornerRadius="35dp"
     app:cardElevation="2dp">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/catatan"
+        android:id="@+id/kartucatatan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white_grey"
         android:padding="16dp">
 
         <LinearLayout
-            android:id="@+id/layoutkartutugas"
+            android:id="@+id/layoutkartucatatan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/sandwich"
+            app:layout_constraintEnd_toStartOf="@+id/catatansandwich"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -31,34 +31,36 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/interbold"
-                android:text="Tugas 1"
+                android:text="Catatan 1"
                 android:textColor="@android:color/black"
-                android:textSize="24sp"
+                android:textSize="23sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@id/sandwich"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/catatan_diskripsi"
+                android:id="@+id/catatan_deskripsi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Membuat Program Ini"
+                android:text="Deskripsi"
+                android:fontFamily="@font/interbold"
                 android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/tgltugas"
+                android:id="@+id/tglcatatan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:text="Tanggal"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="18sp" />
+                android:fontFamily="@font/interbold"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/sandwich"
+            android:id="@+id/catatansandwich"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="Menu Opsi"
