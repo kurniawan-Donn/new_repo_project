@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- SEARCH BAR -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -30,20 +29,22 @@
 
                 <ImageView
                     android:id="@+id/searchicon"
-                    android:layout_width="67dp"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_search"
-                    android:tint="@android:color/darker_gray" />
+                    android:src="@drawable/ic_search" />
 
                 <EditText
                     android:id="@+id/et_search"
                     android:layout_width="0dp"
-                    android:layout_height="37dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="Cari Catatan"
+                    android:hint="Cari Catatan..."
+                    android:textColorHint="@color/dark_grey"
+                    android:fontFamily="@font/intersemibold"
+                    android:textColor="@color/black"
                     android:paddingStart="12dp"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
