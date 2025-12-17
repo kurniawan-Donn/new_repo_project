@@ -54,14 +54,14 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <!-- Judul Tugas -->
+                    <!-- Judul Catatan -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/judul_tugas"
+                        android:text="@string/judul_catatan"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp"
-                        android:fontFamily="@font/interbold" />
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/et_judul"
@@ -73,7 +73,6 @@
                         android:inputType="text"
                         android:textColor="@color/text_primary"
                         android:textColorHint="@color/text_hint"
-                        android:fontFamily="@font/intermedium"
                         android:textSize="14sp" />
 
                     <View
@@ -82,45 +81,15 @@
                         android:layout_marginTop="8dp"
                         android:background="@color/text_hint" />
 
-                    <!-- Tugas (Deskripsi) -->
+                    <!-- Tanggal & Waktu -->
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="@string/tugas"
+                        android:text="@string/tanggal_waktu_opsional"
                         android:textColor="@color/text_primary"
                         android:textSize="16sp"
-                        android:fontFamily="@font/interbold" />
-
-                    <EditText
-                        android:id="@+id/et_deskripsi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:background="@android:color/transparent"
-                        android:gravity="top"
-                        android:hint="@string/isi_deskripsi"
-                        android:inputType="textMultiLine"
-                        android:minHeight="80dp"
-                        android:textColor="@color/text_primary"
-                        android:textColorHint="@color/text_hint"
-                        android:textSize="14sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@color/text_hint" />
-
-                    <!-- Batas Waktu -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/batas_waktu"
-                        android:textColor="@color/text_primary"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/interbold" />
+                        android:textStyle="bold" />
 
                     <!-- Pilih Tanggal -->
                     <LinearLayout
@@ -142,8 +111,7 @@
                             android:layout_weight="1"
                             android:text="@string/pilih_tanggal_waktu"
                             android:textColor="@color/text_hint"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/intermedium"/>
+                            android:textSize="14sp" />
 
                         <ImageView
                             android:layout_width="24dp"
@@ -177,7 +145,6 @@
                             android:layout_weight="1"
                             android:text="@string/pilih_waktu"
                             android:textColor="@color/text_hint"
-                            android:fontFamily="@font/intermedium"
                             android:textSize="14sp" />
 
                         <ImageView
@@ -200,20 +167,21 @@
                         android:text="@string/tidak_ada_tanggal"
                         android:textColor="@color/text_secondary"
                         android:textSize="12sp" />
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
             <!-- Button Tambahkan -->
             <Button
-                android:id="@+id/btn_tambahkan"
+                android:id="@+id/btn_Lanjut"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/bottom_nav_color"
                 android:padding="16dp"
-                android:text="@string/tambah"
+                android:text="@string/lanjut"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:fontFamily="@font/interbold"
