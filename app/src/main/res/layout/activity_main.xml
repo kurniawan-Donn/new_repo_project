@@ -5,8 +5,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:paddingTop="?attr/actionBarSize">
 
     <!-- Fragment Container -->
     <androidx.fragment.app.FragmentContainerView
@@ -25,11 +25,11 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
         android:background="@color/bottom_nav_color"
-        app:itemIconTint="@color/white"
+        app:itemIconTint="#FBF9F9"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:contentDescription="@string/tambah"
         android:src="@drawable/ic_plus"
         app:backgroundTint="@color/white"
         app:borderWidth="0dp"
@@ -53,7 +54,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:maxImageSize="65dp"
-        app:tint="@null"
-        android:contentDescription="@string/tambah" />
+        app:tint="@null" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
