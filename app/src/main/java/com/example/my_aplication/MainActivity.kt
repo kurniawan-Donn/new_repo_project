@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         // Agar saat menu bottom navigation ditekan:
         // - Fragment otomatis berpindah
         // - Back stack dikelola otomatis oleh Navigation Component
-
         bottomnav.setupWithNavController(navController)
     }
 }

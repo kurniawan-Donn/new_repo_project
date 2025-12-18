@@ -16,14 +16,13 @@
         android:padding="20dp">
 
         <!-- LinearLayout untuk Judul, Deskripsi, Tanggal -->
-
         <LinearLayout
             android:id="@+id/layoutkartucatatan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ic_edit_tugas"
+            app:layout_constraintEnd_toStartOf="@+id/ic_edit_catatan"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
