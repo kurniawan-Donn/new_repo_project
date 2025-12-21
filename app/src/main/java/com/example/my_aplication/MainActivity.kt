@@ -2,13 +2,13 @@ package com.example.my_aplication
 
 import android.os.Bundle
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNav: BottomNavigationView
@@ -24,16 +24,17 @@ class MainActivity : AppCompatActivity() {
         fab = findViewById(R.id.fab_add)
         mainHeader = findViewById(R.id.main_header)
 
-        hideSystemUI()
         // Setup Navigation
         setupNavigation()
 
         // Setup FAB
         setupFab()
 
-
         // Setup Bottom Nav listener untuk update header
         setupBottomNavListener()
+
+        // Setup back press handler
+        setupBackPressHandler()
     }
 
     private fun setupNavigation() {
@@ -88,19 +89,22 @@ class MainActivity : AppCompatActivity() {
         bottomSheet.show(supportFragmentManager, "PilihTipeBottomSheet")
     }
 
-    override fun onBackPressed() {
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.catatan_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
+    private fun setupBackPressHandler() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val navHostFragment = supportFragmentManager
+                    .findFragmentById(R.id.catatan_fragment) as NavHostFragment
+                val navController = navHostFragment.navController
 
-        if (navController.currentDestination?.id == R.id.navigation_catatan ||
-            navController.currentDestination?.id == R.id.navigation_tugas) {
-            // Jika di fragment utama, keluar dari app
-            finish()
-        } else {
-            // Jika tidak, lakukan back normal
-            super.onBackPressed()
-
-        }
+                if (navController.currentDestination?.id == R.id.navigation_catatan ||
+                    navController.currentDestination?.id == R.id.navigation_tugas) {
+                    // Jika di fragment utama, keluar dari app
+                    finish()
+                } else {
+                    // Jika tidak, lakukan back normal
+                    navController.navigateUp()
+                }
+            }
+        })
     }
 }
