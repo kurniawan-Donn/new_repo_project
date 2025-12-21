@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showPilihTipeDialog() {
-        val bottomSheet = PilihTipeBottomSheet()
+        val bottomSheet = BottomSheetDialog()
         bottomSheet.show(supportFragmentManager, "PilihTipeBottomSheet")
     }
 
