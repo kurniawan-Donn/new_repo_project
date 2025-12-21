@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
 class CatatanAdapter(
@@ -15,6 +16,7 @@ class CatatanAdapter(
 ) : RecyclerView.Adapter<CatatanAdapter.CatatanViewHolder>() {
 
     inner class CatatanViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val kartuCatatan: ConstraintLayout = view.findViewById(R.id.kartucatatan)
         val judulTextView: TextView = view.findViewById(R.id.catatan_judul)
         val deskripsiTextView: TextView = view.findViewById(R.id.catatan_deskripsi)
         val tanggalTextView: TextView = view.findViewById(R.id.tglcatatan)
@@ -47,8 +49,8 @@ class CatatanAdapter(
             "Tanpa tanggal"
         }
 
-        // Handle item click
-        holder.itemView.setOnClickListener {
+        // Handle item click (klik seluruh card)
+        holder.kartuCatatan.setOnClickListener {
             onItemClick(catatan)
         }
 
@@ -67,7 +69,7 @@ class CatatanAdapter(
 
     // Update data adapter
     fun updateData(newList: List<Catatan>) {
-        catatanList = newList.toList()
+        catatanList = newList
         notifyDataSetChanged()
     }
 }
