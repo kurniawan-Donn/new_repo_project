@@ -1,36 +1,106 @@
 package com.example.my_aplication
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var bottomNav: BottomNavigationView
+    private lateinit var fab: FloatingActionButton
+    private lateinit var mainHeader: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Mengatur tata letak menggunakan layout XML
         setContentView(R.layout.activity_main)
 
-        // Mengambil Fragment yang berperan sebagai NavHostFragment dari Activity
-        // NavHostFragment adalah container yang menampilkan fragment sesuai NavGraph
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.catatan_fragment) as NavHostFragment
+        // Initialize views
+        bottomNav = findViewById(R.id.bottom_nav_view)
+        fab = findViewById(R.id.fab_add)
+        mainHeader = findViewById(R.id.main_header)
 
-        // Mengambil NavController dari NavHostFragment
-        // NavController bertugas mengatur navigasi antar Fragment
-        // (pindah fragment, back stack, startDestination, dll)
+        hideSystemUI()
+        // Setup Navigation
+        setupNavigation()
+
+        // Setup FAB
+        setupFab()
+
+
+        // Setup Bottom Nav listener untuk update header
+        setupBottomNavListener()
+    }
+
+    private fun setupNavigation() {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.catatan_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Menghubungkan BottomNavigationView dari layout XML ke kode Kotlin
-        // BottomNavigationView adalah menu navigasi di bagian bawah layar
-        val bottomnav =findViewById<BottomNavigationView>(R.id.bottom_nav_view)
+        // Setup BottomNavigationView dengan NavController
+        bottomNav.setupWithNavController(navController)
 
-        // Menghubungkan BottomNavigationView dengan NavController
-        // Agar saat menu bottom navigation ditekan:
-        // - Fragment otomatis berpindah
-        // - Back stack dikelola otomatis oleh Navigation Component
-        bottomnav.setupWithNavController(navController)
+        // Handle middle item (navigation_plus) click
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_catatan -> {
+                    navController.navigate(R.id.navigation_catatan)
+                    mainHeader.text = "Daftar Catatan"
+                    true
+                }
+                R.id.navigation_tugas -> {
+                    navController.navigate(R.id.navigation_tugas)
+                    mainHeader.text = "Daftar Tugas"
+                    true
+                }
+                R.id.navigation_plus -> {
+                    // Middle button - buka dialog sama seperti FAB
+                    showPilihTipeDialog()
+                    false // Don't navigate
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun setupFab() {
+        fab.setOnClickListener {
+            showPilihTipeDialog()
+        }
+    }
+
+    private fun setupBottomNavListener() {
+        // Update header text based on selected item
+        bottomNav.setOnItemReselectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_catatan -> mainHeader.text = "Daftar Catatan"
+                R.id.navigation_tugas -> mainHeader.text = "Daftar Tugas"
+            }
+        }
+    }
+
+    private fun showPilihTipeDialog() {
+        val bottomSheet = PilihTipeBottomSheet()
+        bottomSheet.show(supportFragmentManager, "PilihTipeBottomSheet")
+    }
+
+    override fun onBackPressed() {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.catatan_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        if (navController.currentDestination?.id == R.id.navigation_catatan ||
+            navController.currentDestination?.id == R.id.navigation_tugas) {
+            // Jika di fragment utama, keluar dari app
+            finish()
+        } else {
+            // Jika tidak, lakukan back normal
+            super.onBackPressed()
+
+        }
     }
 }
