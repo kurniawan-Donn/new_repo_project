@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">my_aplication</string>
+    <string name="app_name">LumiNote</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -24,18 +24,27 @@
         <string name="deskripsi">Deskripsi</string>
         <string name="isi_deskripsi">Isi deskripsi</string>
         <string name="tanggal_waktu_opsional">Tanggal &amp; Waktu (opsional)</string>
-        <string name="pilih_tanggal_waktu">Pilih tanggal dan waktu</string>
+        <string name="pilih_tanggal">Pilih tanggal</string>
         <string name="pilih_waktu">Pilih waktu</string>
         <string name="tidak_ada_tanggal">Tidak ada tanggal - tidak ada notifikasi</string>
         <string name="lanjut">Lanjut</string>
         <string name="tambah">tambahkan</string>
+        <string name="tambah_catatan">Tambah Catatan</string>
+
 
 
         <!-- Tambah Tugas -->
+        <string name="tambah_tugas">Tambah Tugas</string>
         <string name="tugas_baru">Tugas baru</string>
         <string name="judul_tugas">Judul Tugas</string>
         <string name="tugas">Tugas</string>
         <string name="batas_waktu">Batas Waktu</string>
+        <string name="simpan">Simpan</string>
+
+
+
+
+
 
         <!-- Dialog -->
         <string name="menambahkan">Menambahkan</string>
