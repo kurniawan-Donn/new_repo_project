@@ -10,16 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class CatatanFragment : Fragment() {
 
-    private lateinit var viewModel: CatatanViewModel
+    private lateinit var preferences: CatatanPreferences
     private lateinit var adapter: CatatanAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchEditText: EditText
+
+    private var allCatatan = listOf<Catatan>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,11 +33,10 @@ class CatatanFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize ViewModel
-        viewModel = ViewModelProvider(this)[CatatanViewModel::class.java]
+        // Initialize Preferences
+        preferences = CatatanPreferences(requireContext())
 
         // Initialize views
-
         recyclerView = view.findViewById(R.id.rv_catatan)
         searchEditText = view.findViewById(R.id.et_search)
 
@@ -46,14 +46,14 @@ class CatatanFragment : Fragment() {
         // Setup search
         setupSearch()
 
-        // Observe data
-        observeData()
+        // Load data
+        loadData()
     }
 
     override fun onResume() {
         super.onResume()
         // Reload data ketika kembali ke fragment
-        viewModel.loadCatatan()
+        loadData()
     }
 
     private fun setupRecyclerView() {
@@ -78,7 +78,6 @@ class CatatanFragment : Fragment() {
                     putExtra("deskripsi", catatan.deskripsi)
                     putExtra("tanggal", catatan.tanggal)
                     putExtra("waktu", catatan.waktu)
-                    putExtra("note", catatan.note)
                 }
                 startActivity(intent)
             },
@@ -96,17 +95,25 @@ class CatatanFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                viewModel.searchCatatan(s.toString())
+                searchCatatan(s.toString())
             }
 
             override fun afterTextChanged(s: Editable?) {}
         })
     }
 
-    private fun observeData() {
-        viewModel.filteredCatatanList.observe(viewLifecycleOwner) { catatanList ->
-            adapter.updateData(catatanList)
+    private fun loadData() {
+        allCatatan = preferences.getCatatanList().sortedByDescending { it.timestamp }
+        adapter.updateData(allCatatan)
+    }
+
+    private fun searchCatatan(query: String) {
+        val filtered = if (query.isEmpty()) {
+            allCatatan
+        } else {
+            allCatatan.filter { it.querypencocokan(query) }
         }
+        adapter.updateData(filtered)
     }
 
     private fun showDeleteConfirmation(catatan: Catatan) {
@@ -114,7 +121,8 @@ class CatatanFragment : Fragment() {
             .setTitle("Hapus Catatan")
             .setMessage("Apakah Anda yakin ingin menghapus \"${catatan.judul}\"?")
             .setPositiveButton("Hapus") { _, _ ->
-                viewModel.deleteCatatan(catatan.id)
+                preferences.deleteCatatan(catatan.id)
+                loadData()
             }
             .setNegativeButton("Batal", null)
             .show()
